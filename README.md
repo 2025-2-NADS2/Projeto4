@@ -14,7 +14,7 @@ Vide tutoriais do PI.
 
 ## GDP
 
-## Integrantes: <a href="https://www.linkedin.com/in/andrepereiradev/">André Pereira</a>, <a href="https://www.linkedin.com/in/felipe-nunes-de-almeida-a5719634b/">Felipe Nunes</a>, <a href="https://www.linkedin.com/in/gregory-b-602b72307/">Gregory Baruc</a>, <a href=https://www.linkedin.com/in/icaro-souza-dev/">Icaro Souza</a>
+## Integrantes: <a href="https://www.linkedin.com/in/andrepereiradev/">André Pereira</a>, <a href="https://www.linkedin.com/in/felipe-nunes-de-almeida-a5719634b/">Felipe Nunes</a>, <a href="https://www.linkedin.com/in/gregory-b-602b72307/">Gregory Baruc</a>, <a href="https://www.linkedin.com/in/icaro-souza-dev/">Icaro Souza</a>
 
 ## Professores Orientadores: <a href="https://www.linkedin.com/in/victorbarq/">Dr. Victor Von Doom</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Saitama</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Strange</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Yoda</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Gero</a>
 
