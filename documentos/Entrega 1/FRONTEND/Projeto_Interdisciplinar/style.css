@@ -1,0 +1,382 @@
+/* Geral */
+
+*{
+    font-family: sans-serif;
+    text-align: center;
+    justify-content: center;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+p{
+    font-size: 15px;
+    color: #4a5565;
+}
+h2{
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+}
+h4{
+    font-size: 16px;
+    font-weight: 600;
+}
+i{
+    font-size: 30px;
+}
+
+
+
+/* Header */
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
+    height: 60px;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+}
+.home{
+    margin: 20px;
+    margin-left: 222px;
+    font-size: 22px;
+}
+.botoes{
+    display: flex;
+    flex-direction: row;
+    margin-right: 188px; 
+    
+}
+.navegacao{
+    margin: 7px;
+    padding: 5px 13px;
+    background-color: rgb(255, 255, 255);
+    border: 0;
+    border-radius: 8px;
+    height: 33px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.pagatual{
+    margin: 7px;
+    padding: 5px 13px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border: 0;
+    border-radius: 8px;
+    height: 33px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.pagatual:hover{
+    background-color: rgb(36, 36, 36);
+}
+.navegacao:hover{
+    background-color: #d7d7d7;
+}
+
+
+/* Section 1 */
+.section1{
+    height: 333px;
+    background-image: linear-gradient(to right, rgb(0, 21, 255), rgb(187, 0, 255));
+    padding-bottom: 33px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.h1_s1{
+    font-size: 52px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0px;
+
+}
+.p_s1{
+    color: white;
+    font-size: 21px;
+    width: 777px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.btn_s1{
+    height: 33px;
+    margin: 7px;
+    padding: 5px 13px;
+    background-color: rgb(255, 255, 255);
+    border: 0;
+    border-radius: 8px;
+    height: 33px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(187, 0, 255);
+    cursor: pointer;
+}
+.btn_s1:hover{
+    background-color: rgb(219, 219, 219);
+    color: rgb(187, 0, 255);
+}
+
+/* Section2 */
+.section2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 280px;
+    background-color: #ffffff;
+}
+.div_s2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+.s2_superior{
+    margin-bottom: 20px;
+}
+.s2_inferior{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.d1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 333px;
+
+}
+.dazul{
+    font-size: 31px;
+    font-weight: 600;
+    color: #155DFC;
+}
+.dverde{
+    font-size: 31px;
+    font-weight: 600;
+    color: #00A63E;
+}
+.droxo{
+    font-size: 31px;
+    font-weight: 600;
+    color: #9810FA;
+}
+.t1{
+    width: 222px;
+}
+
+.s2_st{
+    font-size: 16px;
+}
+
+/* Section 3 */
+
+.section3{
+    height: 888px;
+
+}
+
+/* Section 4 */
+
+.section4{
+    display: flex;
+    height: 500px;
+    flex-direction: column;
+    padding: 33px;
+    justify-content: center;
+}
+.div_s4{
+    justify-content: center;
+}
+.s4_superior{
+    height: 100px;
+
+}
+.s4_inferior{
+    display: flex;
+    flex-direction: row;
+}
+.s4i{
+    width: 260px;
+    height: 210px;
+    border: solid 1px #e8e8e8;
+    border-radius: 12px;
+    margin: 9px;
+    padding: 20px;
+}
+.icone1{
+    color: #f90800;
+    padding: 11px;
+}
+.icone2{
+    color: #155DFC;
+    padding: 11px;
+}
+.icone3{
+    color: #00A63E;
+    padding: 11px;
+}
+.icone4{
+    color: #9810FA;
+    padding: 11px;
+}
+
+/* Section 5 */
+.section5{
+    height: 200px;
+    background-color: #155DFC;
+    padding: 40px;
+    justify-content: center;
+}
+
+.h2_s5{
+    color: white;
+    margin: 0 238px;
+}
+.p_s5{
+    display: flex;
+    flex-direction: row;
+    color: white;
+}
+.div_s5{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 200px;
+}
+.btn_s5{
+    height: 33px;
+    margin: 7px;
+    padding: 5px 13px;
+    background-color: rgb(255, 255, 255);
+    border: 0;
+    border-radius: 8px;
+    height: 33px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #155DFC;
+    cursor: pointer;
+}
+.btn_s5:hover{
+    background-color: rgb(219, 219, 219);
+}
+.s5_superior{
+    margin-bottom: 33px;
+}
+
+/* Footer */
+
+/* -------------------------- */
+/* ESTILO GERAL DO FOOTER */
+/* -------------------------- */
+
+  
+  /* -------------------------- */
+  /* CONTAINER PRINCIPAL */
+  /* -------------------------- */
+  footer{
+    height: 500px;
+    background-color: #101828;
+    color: white;
+    padding: 20px;
+}
+  footer .container {
+    display: flex;
+    color: #000;
+  }
+
+.titulo_footer{
+    color: white;
+}
+  
+.bloco_links{
+    width: 111px;
+}
+  
+  footer .container ul {
+    width: 25%;
+  }
+.informacoesALMA{
+    color: white;
+}
+.links{
+    text-decoration: none;
+    color: #fff;
+}
+.links:hover{
+    color: #b2d1ff;
+}
+
+  
+  footer .container h3 {
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  
+
+  footer .container ul > p {
+    margin-bottom: 40px;
+  }
+  
+
+  
+  .ultimasinfo {
+    background-color: blue;
+    color: black;
+    padding: 10px 20px;
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+
+  
+  .newsletter{
+    color: white;
+  }
+  .newsletter form {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .newsletter input {
+    border: none;
+    border-radius: 5px;
+    background-color: #30363d;
+  }
+  
+  .newsletter button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #0d1117;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .newsletter button:hover {
+    background: #30363d;
+  }
+  
+  /* -------------------------- */
+  /* LINHA DIVISÓRIA */
+  /* -------------------------- */
+  
+  .linha {
+    border-top: 1px solid #30363d;
+    margin: 20px 0;
+  }
