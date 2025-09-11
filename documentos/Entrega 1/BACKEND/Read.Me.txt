@@ -17,7 +17,6 @@ GET /api/users - Listar usuários
 POST /api/beneficiarios - Cadastrar beneficiário
 GET /api/doadores - Listar doadores
 Desenvolvido por
-[Seu Nome] - FECAP - 2º Semestre
 
 Licença
 Este projeto está sob a licença MIT.
