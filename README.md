@@ -16,7 +16,7 @@ Vide tutoriais do PI.
 
 ## Integrantes: <a href="https://www.linkedin.com/in/andrepereiradev/">André Pereira</a>, <a href="https://www.linkedin.com/in/felipe-nunes-de-almeida-a5719634b/">Felipe Nunes</a>, <a href="https://www.linkedin.com/in/gregory-b-602b72307/">Gregory Baruc</a>, <a href="https://www.linkedin.com/in/icaro-souza-dev/">Icaro Souza</a>
 
-## Professores Orientadores: <a href="https://www.linkedin.com/in/victorbarq/">Dr. Victor Von Doom</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Saitama</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Strange</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Yoda</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Gero</a>
+## Professores Orientadores: <a href="https://www.linkedin.com/in/eduardo-savino/">Eduardo Savino Gomes</a>, <a href="https://www.linkedin.com/in/jbuesso/">José Carlos Buesso </a>, <a href="https://www.linkedin.com/in/ronaldo-araujo-pinto-3542811a/">Ronaldo Araújo Pinto</a>, <a href="https://www.linkedin.com/in/victorbarq/">Victor Bruno Alexander Rosetti de Quiroz</a>, <a href="https://www.linkedin.com/in/francisco-escobar/">Francisco de Souza Escobar/a>
 
 ## Descrição
 
@@ -26,11 +26,9 @@ Vide tutoriais do PI.
 </p>
 
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
+Sobre o Projeto
 <br><br>
-Meu projeto ajuda estudantes FECAP a configurarem seus githubs.
-<br><br>
-May the force be with you!
+Estamos criando um site para uma ONG, onde as pessoas vão poder conhecer melhor o trabalho dela, ver campanhas ativas, fazer doações de forma fácil e acompanhar para onde o dinheiro está indo. A ideia é dar mais transparência e confiança, além de incentivar mais pessoas a ajudarem.
 <br><br>
 
 ## 🛠 Estrutura de pastas
