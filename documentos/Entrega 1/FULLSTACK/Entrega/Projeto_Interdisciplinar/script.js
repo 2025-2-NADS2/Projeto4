@@ -1,10 +1,8 @@
-// ========================================
-// INSTITUTO ALMA - JAVASCRIPT SIMPLES
-// ========================================
+
 
 // Aguarda carregar a página
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Instituto ALMA carregado!');
+    console.log(' Instituto ALMA carregado!');
     
     // Inicializar funcionalidades
     initDonations();
@@ -105,7 +103,7 @@ function showVolunteerForm() {
 // FUNÇÕES EXTRAS SIMPLES
 
 
-// Copiar PIX
+// Copiar PIX NAO TA FUNCIONANDO
 function copyPix() {
     const pixKey = '12345678000190@pix.bb.com.br';
     navigator.clipboard.writeText(pixKey).then(() => {
@@ -202,7 +200,7 @@ function initSlider() {
     moveSlider(0);
 }
 
-// Adicionar evento aos botões PIX e inicializar funcionalidades
+// Adicionar evento aos botões PIX e inicializar funcionalidades PIX NAO FUNCIONAAA
 document.addEventListener('DOMContentLoaded', function() {
     const pixButtons = document.querySelectorAll('.pixb');
     pixButtons.forEach(button => {

@@ -1,4 +1,4 @@
-# 🚀 Instituto ALMA - Como Usar
+#  Instituto ALMA - Como Usar
 
 ## Instalação SUPER SIMPLES
 
@@ -19,22 +19,22 @@ npm start
 4. **Abrir no navegador**
    - http://localhost:3000
 
-## ✅ Pronto! 
+##  Pronto! 
 
 O sistema está funcionando com:
-- ✅ Site completo
-- ✅ Sistema de doações
-- ✅ Candidatura de voluntários
-- ✅ Formulário de contato
+-  Site completo
+-  Sistema de doações
+-  Candidatura de voluntários
+-  Formulário de contato
 
-## 📡 API Endpoints
+##  API Endpoints
 
 - `POST /api/doacao` - Registrar doação
 - `POST /api/voluntario` - Candidatar-se como voluntário
 - `POST /api/contato` - Enviar mensagem
 - `GET /api/status` - Status da API
 
-## 📝 Exemplo de Uso
+##  Exemplo de Uso
 
 ### Doação
 ```javascript
@@ -49,7 +49,7 @@ fetch('/api/doacao', {
 });
 ```
 
-## 🎯 Tudo Funcionando!
+##  Tudo Funcionando!
 
 - Frontend: HTML + CSS + JavaScript
 - Backend: Node.js + Express (super simples)

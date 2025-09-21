@@ -35,7 +35,7 @@ app.post('/api/doacao', (req, res) => {
     }
     
     // Simula registro
-    console.log(`💳 Doação: ${nome} - R$ ${valor} - ${email}`);
+    console.log(` Doação: ${nome} - R$ ${valor} - ${email}`);
     
     res.json({ 
         success: true, 
@@ -53,7 +53,7 @@ app.post('/api/voluntario', (req, res) => {
     }
     
     // Simula registro
-    console.log(`👥 Voluntário: ${nome} - ${area} - ${email}`);
+    console.log(` Voluntário: ${nome} - ${area} - ${email}`);
     
     res.json({ 
         success: true, 
@@ -71,7 +71,7 @@ app.post('/api/contato', (req, res) => {
     }
     
     // Simula registro
-    console.log(`📞 Contato: ${nome} - ${assunto} - ${email}`);
+    console.log(` Contato: ${nome} - ${assunto} - ${email}`);
     
     res.json({ 
         success: true, 
@@ -94,10 +94,10 @@ app.get('/api/status', (req, res) => {
 // ========================================
 
 app.listen(PORT, () => {
-    console.log('🚀 Instituto ALMA - Servidor iniciado!');
-    console.log(`📡 http://localhost:${PORT}`);
-    console.log(`💳 Doação: POST /api/doacao`);
-    console.log(`👥 Voluntário: POST /api/voluntario`);
-    console.log(`📞 Contato: POST /api/contato`);
+    console.log(' Instituto ALMA - Servidor iniciado!');
+    console.log(` http://localhost:${PORT}`);
+    console.log(` Doação: POST /api/doacao`);
+    console.log(` Voluntário: POST /api/voluntario`);
+    console.log(` Contato: POST /api/contato`);
     console.log('=====================================');
 });

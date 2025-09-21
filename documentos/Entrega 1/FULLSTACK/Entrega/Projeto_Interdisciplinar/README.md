@@ -2,16 +2,16 @@
 
 ![Instituto ALMA](./images/slide1.jpg)
 
-## 📋 Sobre o Projeto
+##  Sobre o Projeto
 O Instituto ALMA é uma organização sem fins lucrativos dedicada a ajudar comunidades em situação de vulnerabilidade social. Nosso site oferece informações sobre nossos projetos, formas de doação e como se tornar um voluntário.
 
 ##  Funcionalidades
 
-- ✅ Site responsivo com slider automático
-- ✅ Sistema de doações online
-- ✅ Cadastro de voluntários
-- ✅ Formulário de contato
-- ✅ Prestação de contas transparente
+-  Site responsivo com slider automático
+-  Sistema de doações online
+-  Cadastro de voluntários
+-  Formulário de contato
+-  Prestação de contas transparente
 
 ##  Tecnologias Utilizadas
 
