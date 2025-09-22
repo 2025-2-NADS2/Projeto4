@@ -23,7 +23,7 @@ Vide tutoriais do PI.
 <p align="center">
 <img src="https://i.postimg.cc/y6S21tLm/foto-alma.webp" 
      alt="Instituto ALMA" border="0">
-Imagem do <a href="https://institutoalma.org/"></a>
+<a href="https://institutoalma.org/"></a>
 
 </p>
 
