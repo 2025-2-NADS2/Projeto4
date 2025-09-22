@@ -64,10 +64,36 @@ Há também 4 pastas que seguem da seguinte forma:
 
 ## 🛠 Instalação
 
-<b>Android:</b>
+## FRONT-END
+1. **Instalar Node.js** (se não tiver)
+   - Baixe em: https://nodejs.org
+   - Instale a versão LTS
+     
+
+2. **Instalar dependências**
+```bash
+npm install
+```
+
+## BACK-END
+3. **Iniciar o servidor**
+```bash
+npm start
+```
+
+4. **Abrir no navegador**
+   - http://localhost:3000
+
+##  API Endpoints
+
+- `POST /api/doacao` - Registrar doação
+- `POST /api/voluntario` - Candidatar-se como voluntário
+- `POST /api/contato` - Enviar mensagem
+- `GET /api/status` - Status da API
 
 
 <b>HTML:</b>
+npm install 
 
 Não há instalação!
 Encontre o index.html na pasta executáveis e execute-o como uma página WEB (através de algum browser).
