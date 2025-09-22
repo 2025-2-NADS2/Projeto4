@@ -137,20 +137,25 @@ function setupButtons() {
         });
     }
 }
-
-// Função para controlar o slider horizontal
+//  Slider
 function initSlider() {
     const slider = document.querySelector('.slider');
     const slides = document.querySelectorAll('.slide');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
-    
+
     if (!slider || slides.length === 0) return;
-    
+
     let currentSlide = 0;
     const totalSlides = slides.length;
-    
-    // Função para mover o slider
+
+    // --- PONTO CHAVE: CONTROLE DE VELOCIDADE ---
+    // Defina o tempo em milissegundos (ms) para a troca de slides.
+    // 3000ms = 3 segundos. Aumente este valor para deixar mais lento.
+    const intervalo = 4000; // <--- Altere este valor! (ex: 4000 para 4 segundos)
+    let autoSlideTimer;
+
+    // Função para mover o slider 
     function moveSlider(index) {
         if (index < 0) {
             currentSlide = totalSlides - 1;
@@ -159,46 +164,42 @@ function initSlider() {
         } else {
             currentSlide = index;
         }
-        
-        // Mover o slider para a posição correta
-        slider.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
+
+        slider.style.transform = `translateX(-${currentSlide * 33.333}%)`;
     }
-    
-    // Configurar os botões de navegação
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            moveSlider(currentSlide - 1);
-        });
+
+    // Função para iniciar o slider automático
+    function startAutoSlider() {
+        // Limpa qualquer timer anterior para evitar múltiplos timers rodando
+        clearInterval(autoSlideTimer);
+        // Inicia um novo timer
+        autoSlideTimer = setInterval(() => {
+            moveSlider(currentSlide + 1); // Avança para o próximo slide
+        }, intervalo);
     }
-    
+
+    // Adiciona a funcionalidade aos botões
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
             moveSlider(currentSlide + 1);
+            startAutoSlider(); // Reinicia o timer ao clicar
         });
     }
-    
-    // Iniciar o slider automático
-    function autoSlide() {
-        moveSlider(currentSlide + 1);
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            moveSlider(currentSlide - 1);
+            startAutoSlider(); // Reinicia o timer ao clicar
+        });
     }
-    
-    // Mudar slide a cada 5 segundos
-    const slideInterval = setInterval(autoSlide, 5000);
-    
-    // Parar o slider automático quando o mouse estiver sobre o slider
-    slider.addEventListener('mouseenter', () => {
-        clearInterval(slideInterval);
-    });
-    
-    // Reiniciar o slider automático quando o mouse sair do slider
-    slider.addEventListener('mouseleave', () => {
-        clearInterval(slideInterval);
-        setInterval(autoSlide, 5000);
-    });
-    
-    // Inicializar o slider
-    moveSlider(0);
+
+    // Inicia o slider automático quando a página carrega
+    startAutoSlider();
 }
+
+// Chame a função para iniciar tudo
+initSlider();
+
 
 // Adicionar evento aos botões PIX e inicializar funcionalidades PIX NAO FUNCIONAAA
 document.addEventListener('DOMContentLoaded', function() {
