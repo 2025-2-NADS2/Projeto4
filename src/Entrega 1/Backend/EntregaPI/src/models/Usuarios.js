@@ -36,7 +36,7 @@ class Usuario {
                 dados.email
             ]);
 
-            // ✅ Retorna os dados incluindo a senha
+            // Retorna os dados 
             return { id: result.lastID, ...dados };
 
         } catch (error) {
