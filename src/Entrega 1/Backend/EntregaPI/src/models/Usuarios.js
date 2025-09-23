@@ -1,39 +1,105 @@
-// src/models/Noticias.js
+// src/models/Usuario.js
 const db = require('../database/database');
 
-class Noticias {
-    // CRIAR NOTÍCIA
+class Usuario {
+    // Validação: nome completo, CPF e email obrigatórios
+    static validar(dados) {
+        const erros = [];
+
+        if (!dados.nome_completo) erros.push('Nome completo é obrigatório');
+        if (!dados.cpf) erros.push('CPF é obrigatório');
+        if (!dados.email) erros.push('Email é obrigatório');
+
+        return erros;
+    }
+
+    // CRIAR USUÁRIO
     static async criar(dados) {
-        const query = `INSERT INTO Noticias (cd_campanha, titulo_noticia, data_noticia, autor, conteudo) 
-                        VALUES (?, ?, ?, ?, ?)`;
-        
-        const result = await db.runAsync(query, [
-            dados.cd_campanha,
-            dados.titulo_noticia,
-            dados.data_noticia,
-            dados.autor,
-            dados.conteudo
-        ]);
-        
-        return { id: result.lastID, ...dados };
-    }
+        try {
+            const erros = Usuario.validar(dados);
+            if (erros.length > 0) {
+                throw { tipo: 'validacao', erros };
+            }
 
-    //BUSCAR NOTÍCIAS
-    static async buscar() {
-        const rows = await db.allAsync("SELECT * FROM Noticias ORDER BY cd_noticias DESC");
-        return rows;
-    }
+            const query = `
+                INSERT INTO Usuario (nome_completo, telefone, cpf, cep, nome_usuario, senha, email) 
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            `;
 
-    //DELETAR NOTÍCIA
-    static async deletar(id) {
-        const result = await db.runAsync("DELETE FROM Noticias WHERE cd_noticias = ?", [id]);
-        
-        if (result.changes === 0) {
-            throw new Error('Notícia não encontrada');
+            const result = await db.runAsync(query, [
+                dados.nome_completo,
+                dados.telefone || null,
+                dados.cpf,
+                dados.cep || null,
+                dados.nome_usuario || null,
+                dados.senha || null,
+                dados.email
+            ]);
+
+            // ✅ Retorna os dados incluindo a senha
+            return { id: result.lastID, ...dados };
+
+        } catch (error) {
+            console.error('Erro ao criar usuário:', error);
+
+            if (error.message && error.message.includes('UNIQUE constraint failed')) {
+                throw {
+                    tipo: 'validacao',
+                    erros: ['Dados duplicados: CPF, email ou nome de usuário já existe']
+                };
+            }
+
+            throw error;
         }
-        
-        return { id, deletada: true };
+    }
+
+    // BUSCAR TODOS OS USUÁRIOS
+    static async buscar() {
+        try {
+            const rows = await db.allAsync(`
+                SELECT cd_cliente, nome_completo, telefone, cpf, cep, nome_usuario, email 
+                FROM Usuario 
+                ORDER BY cd_cliente DESC
+            `);
+
+            return rows;
+        } catch (error) {
+            console.error('Erro ao buscar usuários:', error);
+            throw error;
+        }
+    }
+
+    // BUSCAR USUÁRIO POR ID
+    static async buscarPorId(id) {
+        try {
+            const row = await db.getAsync(`
+                SELECT cd_cliente, nome_completo, telefone, cpf, cep, nome_usuario, email 
+                FROM Usuario 
+                WHERE cd_cliente = ?
+            `, [id]);
+
+            return row; // null se não encontrar
+        } catch (error) {
+            console.error(`Erro ao buscar usuário ${id}:`, error);
+            throw error;
+        }
+    }
+
+    // DELETAR USUÁRIO
+    static async deletar(id) {
+        try {
+            const result = await db.runAsync("DELETE FROM Usuario WHERE cd_cliente = ?", [id]);
+
+            if (result.changes === 0) {
+                throw new Error('Usuário não encontrado');
+            }
+
+            return { id, deletado: true };
+        } catch (error) {
+            console.error(`Erro ao deletar usuário ${id}:`, error);
+            throw error;
+        }
     }
 }
 
-module.exports = Noticias;
+module.exports = Usuario;
