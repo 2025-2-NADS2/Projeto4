@@ -108,7 +108,9 @@ Para abrir este projeto você necessita das seguintes ferramentas:
 
 
 ## 📋 Licença/License
-Utilize o link <https://chooser-beta.creativecommons.org/> para fazer uma licença CC BY 4.0.
+
+    Instituto Alma GDP  © 2025 by GDP is licensed under CC BY-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/
+
 
 ## 🎓 Referências
 
