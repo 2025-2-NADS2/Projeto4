@@ -1,0 +1,13 @@
+https://github.com/Wkarus/NADS2-GRUPO4-POO
+
+
+
+AZURE:
+https://portal.azure.com/?subscriptionId=cb02a052-a2df-4b09-b919-ce96fa382e33#@icarololo1gmail.onmicrosoft.com/resource/subscriptions/cb02a052-a2df-4b09-b919-ce96fa382e33/resourceGroups/Projeto-PI-NADS2-GRUPO4_group/providers/Microsoft.Web/sites/Projeto-PI-NADS2-GRUPO4/appServices
+
+
+Domínio padrão
+projeto-pi-nads2-grupo4-frb0e0dscjbve2d9.brazilsouth-01.azurewebsites.net
+
+
+https://projeto-pi-nads2-grupo4-frb0e0dscjbve2d9.brazilsouth-01.azurewebsites.net/swagger/index.html
