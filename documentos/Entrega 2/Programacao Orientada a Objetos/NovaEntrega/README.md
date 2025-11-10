@@ -3,13 +3,13 @@
 API para gestão de doações usando ASP.NET Core, EF Core e SQLite.
 Foco em rodar local fácil, testar via Swagger e opcionalmente publicar no Azure.
 
-## 📋 Requisitos
+## Requisitos
 
 - .NET 8 SDK
 - Visual Studio 2022 ou VS Code
 - Azure Account (para deploy)
 
-## 🚀 Como rodar local
+## Como rodar local
 
 1. Entre no diretório do projeto:
 ```bash
@@ -36,12 +36,12 @@ Observação:
 - **Health Check**: http://localhost:5000/api/health
 - **API Base**: http://localhost:5000/api
 
-### 🔗 URLs e portas
+### URLs e portas
 - Perfil `http` (recomendado): `http://localhost:5000`
 - Execução sem perfil (padrão do SDK): pode abrir em outra porta, ex.: `http://localhost:5279`
 - Para forçar a porta: `set ASPNETCORE_URLS=http://localhost:5000` antes de `dotnet run`
 
-### ▶️ Executar como publicado
+### Executar como publicado
 ```powershell
 # Publicar artefatos
 dotnet publish Servidor_PI.csproj -c Release -o publish
@@ -54,18 +54,18 @@ URLs (publicado):
 - HTTP: `http://localhost:5000` (se configurado via `ASPNETCORE_URLS`)
 - Swagger: `http://localhost:5000/swagger`
 
-## ✅ O que já funciona
+## O que já funciona
 
 Os seguintes componentes foram testados e estão funcionando corretamente:
 
-- ✅ **Health Check**: `GET /api/health` retorna `{"status":"ok"}`
-- ✅ **API de Usuários**: Listagem e operações CRUD funcionando
-- ✅ **Swagger UI**: Documentação interativa disponível
-- ✅ **Banco de Dados SQLite**: Criado automaticamente na primeira execução
-- ✅ **Logs**: mensagens no console durante execução
-- ✅ **CORS**: Configurado para permitir requisições de qualquer origem
+- **Health Check**: `GET /api/health` retorna `{"status":"ok"}`
+- **API de Usuários**: Listagem e operações CRUD funcionando
+- **Swagger UI**: Documentação interativa disponível
+- **Banco de Dados SQLite**: Criado automaticamente na primeira execução
+- **Logs**: mensagens no console durante execução
+- **CORS**: Configurado para permitir requisições de qualquer origem
 
-## 📚 Endpoints principais
+## Endpoints principais
 
 ### Health Check
 - `GET /api/health` - Status da API
@@ -149,9 +149,9 @@ dotnet run
 - **Noticias**: cd_noticias (PK), cd_campanha (FK), titulo_noticia, data_noticia, autor, conteudo
 - **Relatorio**: cd_relatorio (PK), cd_campanha (FK), tipo_relatorio, valor_gasto, data_relatorio
 
-## ☁️ Deploy no Azure App Service (opcional)
+## Deploy no Azure App Service (opcional)
 
-> 📖 **Guia Completo**: Para um passo a passo detalhado, consulte o arquivo [GUIA_DEPLOY_AZURE.md](./GUIA_DEPLOY_AZURE.md)
+>  **Guia Completo**: Para um passo a passo detalhado, consulte o arquivo [GUIA_DEPLOY_AZURE.md](./GUIA_DEPLOY_AZURE.md)
 
 ### Pré-requisitos
 - Conta Azure (Free tier disponível)
@@ -166,18 +166,18 @@ dotnet run
    - Escolha:
      - **Runtime stack**: .NET 8 (LTS)
      - **Operating System**: Windows
-     - **Pricing Plan**: **Free (F1)** ⭐ **GRATUITO - PERFEITO PARA PROJETO ACADÊMICO**
-       - ✅ Totalmente gratuito
-       - ⚠️ Pode ficar "dormindo" após 60 dias de inatividade (mas pode ser reativado)
+     - **Pricing Plan**: **Free (F1)**  **GRATUITO - PERFEITO PARA PROJETO ACADÊMICO**
+       -  Totalmente gratuito
+       -  Pode ficar "dormindo" após 60 dias de inatividade (mas pode ser reativado)
    - Clique em "Review + Create"
 
-2. **Configurar Deploy via GitHub (MÉTODO FÁCIL)** ⭐:
+2. **Configurar Deploy via GitHub (MÉTODO FÁCIL)** :
    - No App Service, vá em **Deployment Center**
    - Escolha **GitHub** como source
    - Faça login e autorize o Azure
    - Selecione seu repositório e branch (`main`)
    - Clique em **Save**
-   - ✅ **Pronto!** O Azure cria tudo automaticamente (workflow, secrets, etc.)
+   - **Pronto!** O Azure cria tudo automaticamente (workflow, secrets, etc.)
    - O primeiro deploy pode levar 5-10 minutos
 
 3. **Configurar Connection String**:
@@ -193,16 +193,16 @@ dotnet run
    - Swagger: `https://seuapp.azurewebsites.net/swagger`
    - Listar usuários: `https://seuapp.azurewebsites.net/api/usuarios`
 
-> 💡 **Dica**: Se preferir mais controle, consulte o [GUIA_DEPLOY_AZURE.md](./GUIA_DEPLOY_AZURE.md) para ver o método manual com publish profile (mais complexo).
+>  **Dica**: Se preferir mais controle, consulte o [GUIA_DEPLOY_AZURE.md](./GUIA_DEPLOY_AZURE.md) para ver o método manual com publish profile (mais complexo).
 
-### ⚠️ Importante
+### Importante
 
 - **Método Automático**: Com o método do Deployment Center, o Azure cria o workflow automaticamente - você não precisa editar nada!
 - **Swagger**: Está habilitado em produção para facilitar testes
 - **Banco de Dados**: Será criado automaticamente na primeira execução no Azure
-- **Primeiro Deploy**: Pode levar 5-10 minutos, seja paciente! 😊
+- **Primeiro Deploy**: Pode levar 5-10 minutos, seja paciente! 
 
-### 🚦 CI/CD via GitHub Actions (repositório)
+### CI/CD via GitHub Actions (repositório)
 - Workflow principal: `.github/workflows/main_projeto-pi-nads2-grupo4.yml`
 - Esse workflow já compila e publica a partir de `NovaEntrega/` usando `Servidor_PI.sln/Servidor_PI.csproj`.
 - Pastas `.github/workflows` fora da raiz (ex.: `NovaEntrega/.github/workflows`) não são lidas pelo GitHub Actions.
@@ -210,22 +210,22 @@ dotnet run
   - Faça um push na branch `main`, ou
   - Execute manualmente em **Actions** > workflow > **Run workflow**.
 
-### 💰 Plano Gratuito (Free F1)
+### Plano Gratuito (Free F1)
 
 **Vantagens:**
-- ✅ Totalmente gratuito
-- ✅ Perfeito para projetos acadêmicos
-- ✅ HTTPS incluso
-- ✅ 1GB de armazenamento (suficiente para SQLite)
+-  Totalmente gratuito
+-  Perfeito para projetos acadêmicos
+-  HTTPS incluso
+-  1GB de armazenamento (suficiente para SQLite)
 
 **Limitações:**
-- ⚠️ Pode pausar após 60 dias de inatividade (mas pode reativar facilmente)
-- ⚠️ Primeira requisição após inatividade pode ser lenta (30-60s)
-- ⚠️ Recursos limitados (mas suficientes para APIs pequenas/médias)
+-  Pode pausar após 60 dias de inatividade (mas pode reativar facilmente)
+-  Primeira requisição após inatividade pode ser lenta (30-60s)
+-  Recursos limitados (mas suficientes para APIs pequenas/médias)
 
 **Dica**: Para evitar pausa, faça uma requisição ao `/api/health` pelo menos uma vez por semana
 
-## 🔧 Tecnologias
+##  Tecnologias
 
 - .NET 8
 - ASP.NET Core Web API
@@ -234,7 +234,7 @@ dotnet run
 - Serilog (console)
 - Swagger/OpenAPI
 
-## 📁 Estrutura do projeto
+##  Estrutura do projeto
 
 ```
 Servidor_PI/
@@ -254,12 +254,12 @@ Servidor_PI/
 └── README.md
 ```
 
-## 📝 Logs
+##  Logs
 
 - Logs aparecem no console enquanto a API roda
 - Para ver mais detalhes, cheque a saída do terminal
 
-## ✅ Status Codes
+##  Status Codes
 
 - `200 OK` - Sucesso
 - `201 Created` - Recurso criado
@@ -268,7 +268,7 @@ Servidor_PI/
 - `409 Conflict` - Conflito (ex: email já existe)
 - `500 InternalServerError` - Erro interno
 
-## 🧪 Como testar
+##  Como testar
 
 ### Testes Manuais via PowerShell/CMD
 
@@ -314,7 +314,7 @@ curl -X POST http://localhost:5000/api/usuarios \
   -d '{"nome_completo":"Teste","nome_usuario":"teste","senha":"123","email":"teste@teste.com"}'
 ```
 
-## 🐛 Problemas comuns
+##  Problemas comuns
 
 ### Erro: "Unable to open database file"
 - Verifique se a pasta `Data` existe e tem permissões
@@ -346,7 +346,7 @@ curl -X POST http://localhost:5000/api/usuarios \
 ### Porta diferente de 5000 ao rodar local
 - Use `--launch-profile http` ou defina `ASPNETCORE_URLS=http://localhost:5000` para padronizar.
 
-## 📞 Suporte
+##  Suporte
 
 Para dúvidas, use o Swagger em `/swagger` ou veja o console.
 
