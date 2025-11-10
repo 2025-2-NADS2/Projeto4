@@ -1,352 +1,212 @@
-# Servidor_PI — API .NET 8 com SQLite (guia simples)
+Servidor_PI — API .NET 8 com SQLite
 
-API para gestão de doações usando ASP.NET Core, EF Core e SQLite.
-Foco em rodar local fácil, testar via Swagger e opcionalmente publicar no Azure.
+GUIA DE USO!
 
-## 📋 Requisitos
 
-- .NET 8 SDK
-- Visual Studio 2022 ou VS Code
-- Azure Account (para deploy)
 
-## 🚀 Como rodar local
+Essa é uma API para gestão de doações feita com ASP.NET Core, EF Core e SQLite.
 
-1. Entre no diretório do projeto:
-```bash
+Requisitos:
+
+.NET 8 SDK
+
+Visual Studio 2022 ou VS Code
+
+Conta no Azure (para deploy)
+
+Como rodar local:
+
+Acesse o diretório do projeto:
 cd NovaEntrega
-```
 
-2. Restaure e compile (opcional):
-```bash
+Restaure e compile (opcional):
 dotnet restore Servidor_PI.sln
 dotnet build Servidor_PI.sln --configuration Release
-```
 
-3. Execute a aplicação (o banco será criado/migrado automaticamente):
-```bash
+Execute a aplicação (o banco será criado automaticamente):
 dotnet run --project Servidor_PI.csproj --launch-profile http
-```
 
-Observação:
-- Na primeira execução, o banco SQLite é criado/migrado automaticamente.
-- Se você usar `dotnet run` sem perfil, a porta pode variar (ex.: 5279).
+Observações:
+Na primeira execução, o banco SQLite é criado e migrado automaticamente.
+Se rodar apenas com “dotnet run”, a porta pode variar (por exemplo: 5279).
 
-4. Acesse os serviços (perfil `http`):
-- **Swagger UI**: http://localhost:5000/swagger
-- **Health Check**: http://localhost:5000/api/health
-- **API Base**: http://localhost:5000/api
+Acesse os serviços com o perfil http:
+Swagger UI: http://localhost:5000/swagger
 
-### 🔗 URLs e portas
-- Perfil `http` (recomendado): `http://localhost:5000`
-- Execução sem perfil (padrão do SDK): pode abrir em outra porta, ex.: `http://localhost:5279`
-- Para forçar a porta: `set ASPNETCORE_URLS=http://localhost:5000` antes de `dotnet run`
+Health Check: http://localhost:5000/api/health
 
-### ▶️ Executar como publicado
-```powershell
-# Publicar artefatos
+API Base: http://localhost:5000/api
+
+URLs e portas:
+Perfil http (recomendado): http://localhost:5000
+
+Execução sem perfil: pode abrir em outra porta, como http://localhost:5279
+
+Para forçar a porta: use “set ASPNETCORE_URLS=http://localhost:5000”
+ antes de rodar.
+
+Executar como publicado:
 dotnet publish Servidor_PI.csproj -c Release -o publish
-
-# Rodar executável publicado em modo Desenvolvimento (SQLite local)
+Depois rode:
 $env:ASPNETCORE_ENVIRONMENT = "Development"
 ./publish/Servidor_PI.exe
-```
-URLs (publicado):
-- HTTP: `http://localhost:5000` (se configurado via `ASPNETCORE_URLS`)
-- Swagger: `http://localhost:5000/swagger`
 
-## ✅ O que já funciona
+URLs do modo publicado:
+http://localhost:5000
 
-Os seguintes componentes foram testados e estão funcionando corretamente:
+Swagger: http://localhost:5000/swagger
 
-- ✅ **Health Check**: `GET /api/health` retorna `{"status":"ok"}`
-- ✅ **API de Usuários**: Listagem e operações CRUD funcionando
-- ✅ **Swagger UI**: Documentação interativa disponível
-- ✅ **Banco de Dados SQLite**: Criado automaticamente na primeira execução
-- ✅ **Logs**: mensagens no console durante execução
-- ✅ **CORS**: Configurado para permitir requisições de qualquer origem
+O que já funciona:
 
-## 📚 Endpoints principais
+Health Check (GET /api/health) retorna {"status":"ok"}
 
-### Health Check
-- `GET /api/health` - Status da API
+API de Usuários com listagem e CRUD
 
-### Usuários
-- `GET /api/usuarios` - Lista todos (com paginação: `?page=1&pageSize=10`)
-- `GET /api/usuarios/{id}` - Busca por ID
-- `GET /api/usuarios/publicar` - Publica todos os usuários
-- `POST /api/usuarios` - Cria novo usuário
-- `PUT /api/usuarios/{id}` - Atualiza usuário
-- `DELETE /api/usuarios/{id}` - Deleta usuário
+Swagger disponível
 
-### Campanhas
-- `GET /api/campanhas` - Lista todas
-- `GET /api/campanhas/{id}` - Busca por ID
-- `GET /api/campanhas/publicar` - Publica todas as campanhas
-- `POST /api/campanhas` - Cria nova campanha
-- `PUT /api/campanhas/{id}` - Atualiza campanha
-- `DELETE /api/campanhas/{id}` - Deleta campanha
+Banco SQLite criado automaticamente
 
-### Doações
-- `GET /api/doacoes` - Lista todas
-- `GET /api/doacoes/{id}` - Busca por ID
-- `GET /api/doacoes/publicar` - Publica todas as doações
-- `POST /api/doacoes` - Cria nova doação
-- `PUT /api/doacoes/{id}` - Atualiza doação
-- `DELETE /api/doacoes/{id}` - Deleta doação
+Logs aparecem no console
 
-### Notícias
-- `GET /api/noticias` - Lista todas
-- `GET /api/noticias/{id}` - Busca por ID
-- `GET /api/noticias/publicar` - Publica todas as notícias
-- `POST /api/noticias` - Cria nova notícia
-- `PUT /api/noticias/{id}` - Atualiza notícia
-- `DELETE /api/noticias/{id}` - Deleta notícia
+CORS liberado
 
-### Relatórios
-- `GET /api/relatorios` - Lista todos
-- `GET /api/relatorios/{id}` - Busca por ID
-- `GET /api/relatorios/publicar` - Publica todos os relatórios
-- `POST /api/relatorios` - Cria novo relatório
-- `PUT /api/relatorios/{id}` - Atualiza relatório
-- `DELETE /api/relatorios/{id}` - Deleta relatório
+Endpoints principais:
 
-### Views
-- `GET /api/views/buscar-nome?usuario=xxx` - Busca nome completo e nome de usuário
-- `GET /api/views/doacoes-detalhadas` - Lista doações com detalhes de usuário e campanha
+Health Check
+GET /api/health — mostra o status da API
 
-## 🗄️ Banco de dados
+Usuários
+GET /api/usuarios — lista todos
+GET /api/usuarios/{id} — busca por ID
+GET /api/usuarios/publicar — publica todos
+POST /api/usuarios — cria novo
+PUT /api/usuarios/{id} — atualiza
+DELETE /api/usuarios/{id} — remove
 
-- **Tipo**: SQLite
-- **Local dev**: `Data/app.db`
-- **Produção (Azure)**: `D:\home\site\wwwroot\Data\app.db`
-- **Criação**: automática na primeira execução
+Campanhas
+GET /api/campanhas — lista todas
+GET /api/campanhas/{id} — busca por ID
+POST /api/campanhas — cria nova
+PUT /api/campanhas/{id} — atualiza
+DELETE /api/campanhas/{id} — remove
 
-### Como a criação acontece
+Doações
+GET /api/doacoes — lista todas
+GET /api/doacoes/{id} — busca por ID
+POST /api/doacoes — cria nova
+PUT /api/doacoes/{id} — atualiza
+DELETE /api/doacoes/{id} — remove
 
-Ao iniciar, a API verifica se o banco existe e aplica o esquema necessário.
-Se houver migrations, elas são aplicadas. Caso exista script inicial configurado,
-ele pode ser usado na primeira criação. Para você, basta rodar `dotnet run`.
+Notícias
+GET /api/noticias — lista todas
+GET /api/noticias/{id} — busca por ID
+POST /api/noticias — cria nova
+PUT /api/noticias/{id} — atualiza
+DELETE /api/noticias/{id} — remove
 
-### Dados de teste
+Relatórios
+GET /api/relatorios — lista todos
+GET /api/relatorios/{id} — busca por ID
+POST /api/relatorios — cria novo
+PUT /api/relatorios/{id} — atualiza
+DELETE /api/relatorios/{id} — remove
 
-O banco já vem com dados de teste pré-inseridos para facilitar os testes:
+Views
+GET /api/views/buscar-nome?usuario=xxx — busca nome completo e de usuário
+GET /api/views/doacoes-detalhadas — lista doações com detalhes
 
-- **2 Usuários**: João Silva Santos (`joao123`) e Maria Oliveira (`maria456`)
-- **2 Campanhas**: "Campanha do Agasalho 2024" e "Natal Solidário"
-- **2 Doações**: Uma de roupas e uma em dinheiro
+Banco de dados:
+Tipo: SQLite
+Local (dev): Data/app.db
+Produção (Azure): D:\home\site\wwwroot\Data\app.db
+Criação: automática na primeira execução
 
-Para recriar o banco com dados de teste:
-```bash
-# Delete o banco existente e execute novamente
-Remove-Item Data\app.db -ErrorAction SilentlyContinue
-dotnet run
-```
+O banco já vem com dados de teste:
+Dois usuários, duas campanhas e duas doações.
 
-### Estrutura (resumo)
-- **Usuario**: cd_cliente (PK), nome_completo, telefone, cpf (UNIQUE), cep, nome_usuario (UNIQUE), senha, email (UNIQUE)
-- **Campanha**: cd_campanha (PK), nome_campanha, meta_arrecadacao, inicio, fim
-- **Doacao**: cd_doacao (PK), cd_cliente (FK), cd_campanha (FK), nome_doacao, tipo_doacao, forma_arrecadacao, status_arrecadacao
-- **Noticias**: cd_noticias (PK), cd_campanha (FK), titulo_noticia, data_noticia, autor, conteudo
-- **Relatorio**: cd_relatorio (PK), cd_campanha (FK), tipo_relatorio, valor_gasto, data_relatorio
+Para recriar o banco com dados de teste, apague o arquivo Data/app.db e rode novamente o projeto.
 
-## ☁️ Deploy no Azure App Service (opcional)
+Configurar deploy via GitHub:
+No Azure App Service, vá em Deployment Center, escolha GitHub, faça login e selecione o repositório e a branch main.
+Clique em Save. O Azure cria automaticamente o workflow e faz o deploy (leva de 5 a 10 minutos).
 
-> 📖 **Guia Completo**: Para um passo a passo detalhado, consulte o arquivo [GUIA_DEPLOY_AZURE.md](./GUIA_DEPLOY_AZURE.md)
+Configurar Connection String:
+No App Service, vá em Configuration > Application settings
+Adicione uma nova configuração chamada ConnectionStrings:Default
+Valor: Data Source=D:\home\site\wwwroot\Data\app.db
+Salve as alterações.
 
-### Pré-requisitos
-- Conta Azure (Free tier disponível)
-- Repositório GitHub com o código
-- GitHub Actions configurado
+Testar:
+Acesse https://projeto-pi-nads2-grupo4-frb0e0dscjbve2d9.brazilsouth-01.azurewebsites.net/api/health
 
-### Resumo dos Passos (Método Recomendado - Mais Fácil) ⭐
+Deve retornar {"status":"ok"}
+Swagger: https://projeto-pi-nads2-grupo4-frb0e0dscjbve2d9.brazilsouth-01.azurewebsites.net/swagger/index.html
 
-1. **Criar App Service no Azure Portal**:
-   - Acesse [Azure Portal](https://portal.azure.com)
-   - Create a resource > Web App
-   - Escolha:
-     - **Runtime stack**: .NET 8 (LTS)
-     - **Operating System**: Windows
-     - **Pricing Plan**: **Free (F1)** ⭐ **GRATUITO - PERFEITO PARA PROJETO ACADÊMICO**
-       - ✅ Totalmente gratuito
-       - ⚠️ Pode ficar "dormindo" após 60 dias de inatividade (mas pode ser reativado)
-   - Clique em "Review + Create"
+Listar usuários: https://projeto-pi-nads2-grupo4-frb0e0dscjbve2d9.brazilsouth-01.azurewebsites.net/api/usuarios
 
-2. **Configurar Deploy via GitHub (MÉTODO FÁCIL)** ⭐:
-   - No App Service, vá em **Deployment Center**
-   - Escolha **GitHub** como source
-   - Faça login e autorize o Azure
-   - Selecione seu repositório e branch (`main`)
-   - Clique em **Save**
-   - ✅ **Pronto!** O Azure cria tudo automaticamente (workflow, secrets, etc.)
-   - O primeiro deploy pode levar 5-10 minutos
+Importante:
+O Swagger está habilitado em produção para facilitar os testes.
+O banco será criado automaticamente na primeira execução no Azure.
+O primeiro deploy pode demorar alguns minutos.
 
-3. **Configurar Connection String**:
-   - No App Service, vá em **Configuration** > **Application settings**
-   - Clique em **New application setting**
-   - **Name**: `ConnectionStrings:Default`
-   - **Value**: `Data Source=D:\home\site\wwwroot\Data\app.db`
-   - Clique em **Save**
+CI/CD via GitHub Actions:
+O workflow principal é .github/workflows/main_projeto-pi-nads2-grupo4.yml
+Ele já compila e publica o projeto Servidor_PI dentro de NovaEntrega.
+Pastas .github/workflows fora da raiz não são lidas pelo GitHub.
 
-4. **Testar**:
-   - Acesse: `https://seuapp.azurewebsites.net/api/health`
-   - Deve retornar: `{ "status": "ok" }`
-   - Swagger: `https://seuapp.azurewebsites.net/swagger`
-   - Listar usuários: `https://seuapp.azurewebsites.net/api/usuarios`
+Tecnologias usadas:
+.NET 8
+ASP.NET Core Web API
+Entity Framework Core 8
+SQLite
+Serilog
+Swagger/OpenAPI
 
-> 💡 **Dica**: Se preferir mais controle, consulte o [GUIA_DEPLOY_AZURE.md](./GUIA_DEPLOY_AZURE.md) para ver o método manual com publish profile (mais complexo).
+Estrutura do projeto (resumo):
+Servidor_PI
+Controllers — controladores da API
+Data — contextos e mapeamentos
+Enums — tipos enumerados
+Models — entidades
+Repositories — interfaces e implementações
+Program.cs — ponto de entrada
+appsettings.json — configuração
 
-### ⚠️ Importante
+Logs aparecem no console enquanto a API roda.
 
-- **Método Automático**: Com o método do Deployment Center, o Azure cria o workflow automaticamente - você não precisa editar nada!
-- **Swagger**: Está habilitado em produção para facilitar testes
-- **Banco de Dados**: Será criado automaticamente na primeira execução no Azure
-- **Primeiro Deploy**: Pode levar 5-10 minutos, seja paciente! 😊
+Códigos de status:
+200 OK — sucesso
+201 Created — criado
+400 BadRequest — dados inválidos
+404 NotFound — não encontrado
+409 Conflict — conflito (como email repetido)
+500 InternalServerError — erro interno
 
-### 🚦 CI/CD via GitHub Actions (repositório)
-- Workflow principal: `.github/workflows/main_projeto-pi-nads2-grupo4.yml`
-- Esse workflow já compila e publica a partir de `NovaEntrega/` usando `Servidor_PI.sln/Servidor_PI.csproj`.
-- Pastas `.github/workflows` fora da raiz (ex.: `NovaEntrega/.github/workflows`) não são lidas pelo GitHub Actions.
-- Para disparar:
-  - Faça um push na branch `main`, ou
-  - Execute manualmente em **Actions** > workflow > **Run workflow**.
+Como testar:
+Health Check:
+Invoke-WebRequest -Uri "http://localhost:5000/api/health
+" -UseBasicParsing
 
-### 💰 Plano Gratuito (Free F1)
+Listar usuários:
+Invoke-WebRequest -Uri "http://localhost:5000/api/usuarios
+" -UseBasicParsing
 
-**Vantagens:**
-- ✅ Totalmente gratuito
-- ✅ Perfeito para projetos acadêmicos
-- ✅ HTTPS incluso
-- ✅ 1GB de armazenamento (suficiente para SQLite)
+Listar doações:
+Invoke-WebRequest -Uri "http://localhost:5000/api/doacoes
+" -UseBasicParsing
 
-**Limitações:**
-- ⚠️ Pode pausar após 60 dias de inatividade (mas pode reativar facilmente)
-- ⚠️ Primeira requisição após inatividade pode ser lenta (30-60s)
-- ⚠️ Recursos limitados (mas suficientes para APIs pequenas/médias)
+Via Swagger: abra http://localhost:5000/swagger
 
-**Dica**: Para evitar pausa, faça uma requisição ao `/api/health` pelo menos uma vez por semana
-
-## 🔧 Tecnologias
-
-- .NET 8
-- ASP.NET Core Web API
-- Entity Framework Core 8
-- SQLite
-- Serilog (console)
-- Swagger/OpenAPI
-
-## 📁 Estrutura do projeto
-
-```
-Servidor_PI/
-├── Controllers/          # Controllers da API
-├── Data/
-│   ├── Maps/            # Fluent API configurations
-│   └── AppDbContext.cs  # DbContext
-├── Enums/               # Enumeradores
-├── Models/              # Entidades
-├── Repositories/
-│   ├── Interfaces/      # Interfaces dos repositories
-│   └── *.cs             # Implementações
-├── Properties/
-├── appsettings.json     # Configurações produção
-├── appsettings.Development.json
-├── Program.cs           # Entry point
-└── README.md
-```
-
-## 📝 Logs
-
-- Logs aparecem no console enquanto a API roda
-- Para ver mais detalhes, cheque a saída do terminal
-
-## ✅ Status Codes
-
-- `200 OK` - Sucesso
-- `201 Created` - Recurso criado
-- `400 BadRequest` - Dados inválidos
-- `404 NotFound` - Recurso não encontrado
-- `409 Conflict` - Conflito (ex: email já existe)
-- `500 InternalServerError` - Erro interno
-
-## 🧪 Como testar
-
-### Testes Manuais via PowerShell/CMD
-
-1. **Health Check**:
-```powershell
-Invoke-WebRequest -Uri "http://localhost:5000/api/health" -UseBasicParsing
-```
-
-2. **Listar Usuários** (deve retornar 2 usuários de teste):
-```powershell
-Invoke-WebRequest -Uri "http://localhost:5000/api/usuarios" -UseBasicParsing
-```
-
-3. **Listar Doações** (deve retornar 2 doações de teste):
-```powershell
-Invoke-WebRequest -Uri "http://localhost:5000/api/doacoes" -UseBasicParsing
-```
-
-4. **Listar Campanhas** (deve retornar 2 campanhas de teste):
-```powershell
-Invoke-WebRequest -Uri "http://localhost:5000/api/campanhas" -UseBasicParsing
-```
-
-5. **Testar View de Doações Detalhadas**:
-```powershell
-Invoke-WebRequest -Uri "http://localhost:5000/api/views/doacoes-detalhadas" -UseBasicParsing
-```
-
-6. **Via Swagger**: Acesse `http://localhost:5000/swagger` e teste os endpoints
-
-### Testes via cURL
-
-```bash
-# Health Check
+Testes via curl:
 curl http://localhost:5000/api/health
 
-# Listar Usuários
 curl http://localhost:5000/api/usuarios
 
-# Criar Usuário (exemplo)
-curl -X POST http://localhost:5000/api/usuarios \
-  -H "Content-Type: application/json" \
-  -d '{"nome_completo":"Teste","nome_usuario":"teste","senha":"123","email":"teste@teste.com"}'
-```
+Problemas comuns:
+Se aparecer “Unable to open database file”, verifique se a pasta Data existe.
+Erros de chave estrangeira acontecem quando registros relacionados ainda não existem.
+Se a aplicação não iniciar, veja as mensagens do console e cheque se a porta 5000 está livre.
 
-## 🐛 Problemas comuns
-
-### Erro: "Unable to open database file"
-- Verifique se a pasta `Data` existe e tem permissões
-- No Azure, certifique-se que a connection string está correta
-- A pasta `Data` é criada automaticamente na primeira execução
-
-### Erro: "Foreign key constraint failed"
-- Verifique se os registros relacionados existem antes de criar dependências
-- Exemplo: crie um `Usuario` e `Campanha` antes de criar uma `Doacao`
-
-### Erro: "Cannot set default value" em enum
-- **Resolvido**: Enums convertidos para string não devem usar `HasDefaultValue` no mapeamento
-- O valor padrão é definido no modelo (ex: `StatusArrecadacao.Pendente`)
-
-### Aplicação não inicia
-- Veja mensagens no console (possíveis erros detalhados)
-- Confirme se a porta 5000 não está em uso: `netstat -ano | findstr :5000`
-- Rode `dotnet clean` e `dotnet build` para compilar novamente
-
-### Banco de dados não criado
-- A aplicação cria o banco automaticamente na primeira execução
-- Se necessário, delete o arquivo `Data/app.db` e execute novamente
-- O `schema.sql` será executado automaticamente se o banco não existir
-
-### Erro MSB1003 no build ("Specify a project or solution file")
-- Execute os comandos dentro de `NovaEntrega/` e informe `Servidor_PI.sln` (build) ou `Servidor_PI.csproj` (run/publish).
-- No CI, garanta `working-directory: NovaEntrega` nos passos de `restore`, `build` e `publish`.
-
-### Porta diferente de 5000 ao rodar local
-- Use `--launch-profile http` ou defina `ASPNETCORE_URLS=http://localhost:5000` para padronizar.
-
-## 📞 Suporte
-
-Para dúvidas, use o Swagger em `/swagger` ou veja o console.
-
+Se o banco não for criado, apague o arquivo Data/app.db e execute novamente.
+Se a porta mudar, defina ASPNETCORE_URLS=http://localhost:5000
+ antes de rodar.
