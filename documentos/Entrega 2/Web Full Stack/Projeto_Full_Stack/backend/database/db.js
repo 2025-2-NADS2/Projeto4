@@ -1,27 +1,21 @@
 // backend/database/db.js
-const mysql = require('mysql2/promise'); // Usando a versão com 'promises'
+const mysql = require('mysql2/promise');
 
-// Cria o pool de conexões lendo as variáveis do .env
-const pool = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME,
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
-});
+// Esta é a variável padrão que o Railway vai injetar
+// com a sua senha, host, utilizador, etc.
+const connectionString = process.env.DATABASE_URL;
 
-// Testa a conexão (opcional, mas bom)
+const pool = mysql.createPool(connectionString);
+
+// Testa a conexão
 pool.getConnection()
     .then(connection => {
-        console.log('[Database] Conexão com MySQL estabelecida com sucesso.');
+        console.log('[Database] Conexão com MySQL (Railway) estabelecida com sucesso.');
         connection.release();
     })
     .catch(err => {
-        console.error('[Database] Erro ao conectar com o MySQL:');
+        console.error('[Database] Erro ao conectar com o MySQL (Railway):');
         console.error(err.message);
     });
 
-// Exporta o pool para ser usado nos controllers
 module.exports = pool;
