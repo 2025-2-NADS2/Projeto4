@@ -1,5 +1,3 @@
-Certo! Aqui está um README.md completo para o seu projeto.
-
 Este ficheiro é a "porta de entrada" do seu projeto. Ele explica o que o projeto faz, como o seu professor o pode testar, e (o mais importante) dá o link público para o seu site no ar.
 
 Ação Recomendada:
